@@ -25,6 +25,16 @@ void print_matr(int num_lin, int num_col, const int matr[num_lin][num_col]){
     printf("\n");
 }
 
+int range_sum_2d(int num_lin, int num_col, const int ps_matr[num_lin][num_col], int right_idx_i, int right_idx_j, int left_idx_i, int left_idx_j){
+    int total = ps_matr[right_idx_i][right_idx_j];
+    
+    int l_sup = (left_idx_i == 0) ? 0 : ps_matr[left_idx_i - 1][right_idx_j];
+    int c_esq = (left_idx_j == 0) ? 0 : ps_matr[right_idx_i][left_idx_j - 1];
+    int overlap = (left_idx_i == 0 || left_idx_j == 0) ? 0 : ps_matr[left_idx_i - 1][left_idx_j - 1];
+
+    return total + overlap - l_sup - c_esq;
+}
+
 int main(){
     int matr[4][4] = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}, {13, 14, 15, 16}};
     
@@ -39,6 +49,25 @@ int main(){
 
     print_matr(num_lin, num_col, matr);
     print_matr(num_lin, num_col, prefix_sum_2d);
+
+    int flag = 0;
+
+    while (flag == 0){
+        int left_i, left_j, right_i, right_j;
+
+        printf("Digite o indice do intervalo inclusivo das somas\n");
+        if (scanf("%d %d %d %d", &left_i, &left_j, &right_i, &right_j) != 4)
+            break;
+
+        flag = (left_i < 0 || left_i > right_i || right_i > num_lin - 1) ? 1 : 0;
+
+        if (!flag){
+            flag = (left_j < 0 || left_j > right_j || right_j > num_col - 1) ? 1 : 0;
+
+            if (!flag)
+                printf("A soma dos valores nessa área é de %d\n", range_sum_2d(num_lin, num_col, prefix_sum_2d, right_i, right_j, left_i, left_j)); 
+        }
+    }
 
     return 0;
 }

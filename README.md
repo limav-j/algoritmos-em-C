@@ -36,6 +36,19 @@ Após o pré-processamento, qualquer consulta de soma em uma submatriz é feita 
 
 ---
 
+## Algoritmo 3 — Difference Array
+Este código implementa a técnica de **Difference Array**, uma estrutura auxiliar que permite realizar atualizações em intervalos contíguos em tempo **O(1)**, adiando o custo para uma reconstrução final do vetor via **prefix sum**.
+
+---
+
+### ⏱️ Complexidade
+
+- **Tempo:** `O(n)` 
+
+Após o pré-processamento, quaisquer atualizações em intervalos contíguos é feita em **O(1)**.
+
+---
+
 ### 💻 Implementação
 
 A implementação neste repositório foi escrita em **C**, priorizando:
@@ -45,9 +58,9 @@ A implementação neste repositório foi escrita em **C**, priorizando:
 - Boa separação de responsabilidades entre funções
 
 ---
-
 ### 📌 Observação
 
 O início deste repositório é uma forma de manter constância nos estudos e registrar a resolução dos problemas propostos pelo canal **Web Fusion with Bharadwaj**, que apresenta uma série de 150 problemas resolvidos em Java.  
 Aqui, os algoritmos são reimplementados em **C**, com foco didático e conceitual.
+
 
